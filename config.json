@@ -1,7 +1,7 @@
 {
     "serverName": "Galaxy A30s",
     "headerLinks": {
-        "copyparty": ":8080"
+        "copyparty": "http://172.22.191.159:8080/"
     },
     "accentColor": "yellow",
     "port": "8081"

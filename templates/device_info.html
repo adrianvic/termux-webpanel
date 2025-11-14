@@ -47,7 +47,32 @@
         }
 
         .collapsedItem {
-            display: none;
+            display: none!important;
+        }
+
+        #contentImage {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 1em;
+        }
+
+        #deviceImage {
+            width: 10em;
+            height: auto;
+        }
+
+        #allItems {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 1280px) {
+            #contentImage {
+                flex-wrap: wrap;
+            }
+
+            #deviceImage {
+                margin: auto;
+            }
         }
     </style>
 </head>
@@ -81,29 +106,35 @@
                 <a href="{{ address }}">{{label}}</a>
             {% endfor %}
         </header>
-
-        {% for key, value in info.items() %}
-            <div class="item">
-                <h2>{{ key }}</h2>
-                
-                <div class="itemContent">
-                    {% for prop, val in value.items() %}
-                    <div class="line">
-                        <span class="key">{{ prop }}:</span>
-                    </div>
-                    
-                    {% if val is mapping or (val is iterable and val is not string) %}
-                    {{ render_value(val, 20) }}
-                    {% else %}
-                    
-                    <div class="line" style="margin-left: 20px;">
-                        {{ val }}
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
+        <div id="contentImage">
+            <div>
+                <img src="{{ url_for('static', filename='images/device.png') }}"  id="deviceImage">
             </div>
-        {% endfor %}
+            <div id="allItems">
+                {% for key, value in info.items() %}
+                <div class="item">
+                    <h2>{{ key }}</h2>
+                    
+                    <div class="itemContent">
+                        {% for prop, val in value.items() %}
+                        <div class="line">
+                            <span class="key">{{ prop }}:</span>
+                        </div>
+                        
+                        {% if val is mapping or (val is iterable and val is not string) %}
+                        {{ render_value(val, 20) }}
+                        {% else %}
+                        
+                        <div class="line" style="margin-left: 20px;">
+                            {{ val }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </body>
 <script>

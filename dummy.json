@@ -1,5 +1,5 @@
 {
-    "useDummyData": false,
+    "useDummyData": true,
     "dummyData": {
         "termux-battery-status": {
             "present": true,

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        :root {
+            --accent-color: {{ accent }};
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        header {
+            margin-bottom: 1em;
+            margin-top: 1em;
+        }
+
+        a {
+            color: var(--accent-color);
+            opacity: .8;
+            text-decoration: none;
+        }
+
+        .line {
+            margin: 2px 0;
+        }
+
+        .key {
+            font-weight: bold;
+        }
+
+        .item {
+            border-top: medium solid white;
+            padding: 1em;
+        }
+
+        .collapsedItem {
+            display: none;
+        }
+    </style>
+</head>
+
+{% macro render_value(val, indent=20) %}
+    {% if val is mapping %}
+        {% for k, v in val.items() %}
+            <div class="line" style="margin-left: {{ indent }}px;">
+                <span class="key">{{ k }}:</span>
+            </div>
+            {{ render_value(v, indent + 20) }}
+        {% endfor %}
+
+    {% elif val is iterable and val is not string %}
+        {% for item in val %}
+            {{ render_value(item, indent) }}
+        {% endfor %}
+
+    {% else %}
+        <div class="line" style="margin-left: {{ indent }}px;">
+            {{ val }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+<body>
+    <div>
+        <header>
+            <h1>{{title}}</h1>
+            {% for label, address in headerLinks.items() %}
+                <a href="{{ address }}">{{label}}</a>
+            {% endfor %}
+        </header>
+
+        {% for key, value in info.items() %}
+            <div class="item">
+                <h2>{{ key }}</h2>
+                
+                <div class="itemContent">
+                    {% for prop, val in value.items() %}
+                    <div class="line">
+                        <span class="key">{{ prop }}:</span>
+                    </div>
+                    
+                    {% if val is mapping or (val is iterable and val is not string) %}
+                    {{ render_value(val, 20) }}
+                    {% else %}
+                    
+                    <div class="line" style="margin-left: 20px;">
+                        {{ val }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+<script>
+    collapsableItems = document.querySelectorAll(".itemContent");
+    collapsableItems.forEach(item => {
+        let title = item.previousElementSibling;
+        item.classList.toggle("collapsedItem");
+        title.style.cursor = "pointer";
+        title.addEventListener('click', () => {
+            item.classList.toggle("collapsedItem");
+        })
+    });
+</script>
+</html>

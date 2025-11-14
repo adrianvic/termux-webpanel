@@ -1,0 +1,206 @@
+{
+    "useDummyData": false,
+    "dummyData": {
+        "termux-battery-status": {
+            "present": true,
+            "technology": "Li-ion",
+            "health": "GOOD",
+            "plugged": "PLUGGED_AC",
+            "status": "FULL",
+            "temperature": 32.9,
+            "voltage": 4306,
+            "current": -2000,
+            "current_average": -1,
+            "percentage": 100,
+            "level": 100,
+            "scale": 100,
+            "charge_counter": 4000000
+        },
+        "termux-wifi-connectioninfo": {
+            "bssid": "02:00:00:00:00:00",
+            "frequency_mhz": 5220,
+            "ip": "192.168.18.87",
+            "link_speed_mbps": 433,
+            "mac_address": "02:00:00:00:00:00",
+            "network_id": -1,
+            "rssi": -35,
+            "ssid": "<unknown ssid>",
+            "ssid_hidden": false,
+            "supplicant_state": "COMPLETED"
+        },
+        "termux-camera-info": [
+            {
+            "id": "0",
+            "facing": "back",
+            "jpeg_output_sizes": [
+            {
+                "width": 5760,
+                "height": 4320
+            },
+            {
+                "width": 5760,
+                "height": 3240
+            },
+            {
+                "width": 5760,
+                "height": 2664
+            },
+            {
+                "width": 4304,
+                "height": 4304
+            },
+            {
+                "width": 3840,
+                "height": 2160
+            },
+            {
+                "width": 2336,
+                "height": 1080
+            },
+            {
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "width": 1440,
+                "height": 1080
+            },
+            {
+                "width": 1280,
+                "height": 720
+            },
+            {
+                "width": 1088,
+                "height": 1088
+            },
+            {
+                "width": 960,
+                "height": 720
+            },
+            {
+                "width": 720,
+                "height": 480
+            },
+            {
+                "width": 640,
+                "height": 480
+            },
+            {
+                "width": 640,
+                "height": 360
+            },
+            {
+                "width": 352,
+                "height": 288
+            },
+            {
+                "width": 320,
+                "height": 240
+            }
+            ],
+            "focal_lengths": [
+            3.930000066757202
+            ],
+            "auto_exposure_modes": [
+            "CONTROL_AE_MODE_OFF",
+            "CONTROL_AE_MODE_ON",
+            "CONTROL_AE_MODE_ON_AUTO_FLASH",
+            "CONTROL_AE_MODE_ON_ALWAYS_FLASH"
+            ],
+            "physical_size": {
+            "width": 5.184000015258789,
+            "height": 3.8808000087738037
+            },
+            "capabilities": [
+            "backward_compatible",
+            "constrained_high_speed_video"
+            ]
+        },
+        {
+            "id": "1",
+            "facing": "front",
+            "jpeg_output_sizes": [
+            {
+                "width": 4608,
+                "height": 3456
+            },
+            {
+                "width": 4608,
+                "height": 2592
+            },
+            {
+                "width": 4608,
+                "height": 2128
+            },
+            {
+                "width": 3456,
+                "height": 3456
+            },
+            {
+                "width": 3840,
+                "height": 2160
+            },
+            {
+                "width": 2336,
+                "height": 1080
+            },
+            {
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "width": 1440,
+                "height": 1080
+            },
+            {
+                "width": 1280,
+                "height": 720
+            },
+            {
+                "width": 1088,
+                "height": 1088
+            },
+            {
+                "width": 960,
+                "height": 720
+            },
+            {
+                "width": 720,
+                "height": 480
+            },
+            {
+                "width": 640,
+                "height": 480
+            },
+            {
+                "width": 640,
+                "height": 360
+            },
+            {
+                "width": 352,
+                "height": 288
+            },
+            {
+                "width": 320,
+                "height": 240
+            }
+            ],
+            "focal_lengths": [
+            3.4000000953674316
+            ],
+            "auto_exposure_modes": [
+            "CONTROL_AE_MODE_OFF",
+            "CONTROL_AE_MODE_ON"
+            ],
+            "physical_size": {
+            "width": 4.607999801635742,
+            "height": 3.4560000896453857
+            },
+            "capabilities": [
+            "backward_compatible",
+            "burst_capture"
+            ]
+        }
+        ]
+    }
+}

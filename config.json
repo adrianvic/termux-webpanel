@@ -3,5 +3,6 @@
     "headerLinks": {
         "copyparty": ":8080"
     },
-    "accentColor": "yellow"
+    "accentColor": "yellow",
+    "port": "8081"
 }

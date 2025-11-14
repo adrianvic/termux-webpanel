@@ -63,4 +63,4 @@ def device_info():
     return render_template("device_info.html", info=info, title=f"{config["serverName"]}" if config["serverName"] else "Server Info", headerLinks=config["headerLinks"], accent=config["accentColor"])
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5540)
+    app.run(host='0.0.0.0', port=config["port"])

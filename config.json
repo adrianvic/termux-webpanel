@@ -3,6 +3,36 @@
     "headerLinks": {
         "copyparty": "http://172.22.191.159:8080/"
     },
+    "deviceImage": "device.png",
     "accentColor": "yellow",
-    "port": "8081"
+    "port": "8081",
+    "modules": {
+        "termux-battery-status": {
+            "title": "Battery Status",
+            "type": "json"
+        },
+        "termux-wifi-connectioninfo": {
+            "title": "Wifi Connection",
+            "type": "json"
+        },
+        "termux-wifi-scaninfo": {
+            "title": "Wifi Scan Info",
+            "type": "json-list-to-dict",
+            "ltdLabel": "ssid"
+        },
+        "termux-telephony-deviceinfo": {
+            "title": "Telephony Info",
+            "type": "json"
+        },
+        "termux-camera-info": {
+            "title": "Camera Info",
+            "type": "json-list-to-dict",
+            "ltdLabel": "facing"
+        },
+        "termux-volume": {
+            "title": "Volume Info",
+            "type": "json-list-to-dict",
+            "ltdLabel": "stream"
+        }
+    }
 }

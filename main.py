@@ -12,7 +12,7 @@ with open("config.json", "r") as f:
 with open("dummy.json", "r") as f:
     ddata = json.load(f)
 
-def get_stdout(command: str, enforce_dict = False):
+def get_stdout_json(command: str, enforce_dict = False):
     if (ddata['useDummyData']):
         result = ddata['dummyData'][command]
         if isinstance(result, list) and enforce_dict:
@@ -28,33 +28,35 @@ def get_stdout(command: str, enforce_dict = False):
             else:
                 return parsed
         else:
-            info[key] = {'Error': result.stderr}
+            return {'Error': result.stderr}
 
-def get_camera_info():
-    info = { "Camera Info": {} }
-    data = get_stdout("termux-camera-info")
-    for camera in data:
-        info["Camera Info"][camera["facing"]] = camera
+def parse_json_list_to_dict(command, key, ltdLabel):
+    info = { f"{key}": {} }
+    data = get_stdout_json(command)
+    for item in data:
+        info[key][item[ltdLabel]] = item
     return info
 
-def get_generic_info():
+def parse_json(command, key):
     info = {}
-    commands = {
-        'Battery Status': 'termux-battery-status',
-        'Wifi Connection': 'termux-wifi-connectioninfo',
-    }
-
-    for key, command in commands.items():
-        try:
-            info[key] = get_stdout(command, True)
-        except Exception as e:
-            info[key] = {'Exception': str(e)}
+    try:
+        info[key] = get_stdout_json(command, True)
+    except Exception as e:
+        info[key] = {'Exception': str(e)}
     return info
 
 def get_all_info():
-    camera_info = get_camera_info()
-    generic_info = get_generic_info()
-    merged_info = {**generic_info, **camera_info}
+    merged_info = {}
+    for command, attr in config["modules"].items():
+        if attr["type"] == "json":
+            result = parse_json(command, attr["title"])
+            merged_info = {**merged_info, **result}
+        if attr["type"] == "json-enforce-dict":
+            result = parse_json(command, attr["title"])
+            merged_info = {**merged_info, **result}
+        if attr["type"] == "json-list-to-dict":
+            result = parse_json_list_to_dict(command, attr["title"], attr["ltdLabel"])
+            merged_info = {**merged_info, **result}
     return merged_info
 
 @app.route('/', methods=['GET'])
